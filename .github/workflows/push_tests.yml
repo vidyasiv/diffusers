@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-
+      - test-gle
 
 env:
   DIFFUSERS_IS_CI: yes
@@ -81,6 +81,13 @@ jobs:
       - name: Environment
         run: |
           python utils/print_env.py
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        #if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+        #timeout-minutes: 2
+        with:
+          detached: true
+          limit-access-to-actor: true
       - name: Slow PyTorch CUDA checkpoint tests on Ubuntu
         env:
           HUGGING_FACE_HUB_TOKEN: ${{ secrets.HUGGING_FACE_HUB_TOKEN }}
