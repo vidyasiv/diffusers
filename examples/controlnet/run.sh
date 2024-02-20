@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /workspace/vidyasiv_diffusers/examples/controlnet
+cd /workspace/diffusers/examples/controlnet
 export MODEL_DIR="runwayml/stable-diffusion-v1-5"
 export OUTPUT_DIR="/localdisk/output"
 accelerate launch train_controlnet.py \
